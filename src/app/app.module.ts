@@ -14,6 +14,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //Added
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePicker } from '@ionic-native/date-picker';
+import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { DatePicker } from '@ionic-native/date-picker';
     StatusBar,
     SplashScreen,
     DatePicker,
+    ActionSheet, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

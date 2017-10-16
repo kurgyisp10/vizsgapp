@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 //Added
+import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -16,7 +17,9 @@ export class AboutPage {
 
   private add = false;
 
-  constructor(private storage: Storage, public navCtrl: NavController) {
+  constructor(private storage: Storage,
+              public navCtrl: NavController,
+              private actionSheet: ActionSheet) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
         this.gyakList = [];
@@ -44,8 +47,24 @@ export class AboutPage {
     this.add = !this.add;
   }
 
+  options: ActionSheetOptions = {
+    buttonLabels: [],
+    addCancelButtonWithLabel: 'Mégse',
+    addDestructiveButtonWithLabel: 'Összes törlése'
+  };
+
+  DeleteSheet() {
+     
+    this.actionSheet.show(this.options).then((buttonIndex: number) => {
+      console.log('Button pressed: ' + buttonIndex);
+      if (buttonIndex == 1) { this.DeleteAll(); }
+    });
+  }
+
+  
+
   DeleteAll(){
-    this.storage.clear();
     this.gyakList = [];
+    this.storage.set('gyakList', this.gyakList);
   }
 }

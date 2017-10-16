@@ -7,10 +7,11 @@
 <ion-content padding>
   <ion-list>
     
-    <ion-item>
-      <button ion-button block round (click)="dateClick()">Dátum: {{ date }}</button>
-    </ion-item>
-
+    
+    <button ion-item (click)="DateClick()">
+      <ion-icon name="calendar" item-start></ion-icon>
+      {{ date | date:"yyyy. MM. dd." }}
+    </button>
     <ion-item>
       <ion-label floating>Név</ion-label>
       <ion-input type="text" [(ngModel)] = "name"></ion-input>

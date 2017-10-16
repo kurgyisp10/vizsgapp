@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 
 //Added
 import { DatePicker } from '@ionic-native/date-picker';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -10,20 +11,26 @@ import { DatePicker } from '@ionic-native/date-picker';
 })
 export class HomePage {
 
-  private date;
+  private date:any = new Date();
 
-  constructor(public navCtrl: NavController, private datePicker: DatePicker) {
+  constructor(public navCtrl: NavController,
+              private datePicker: DatePicker,
+              private storage: Storage) {
 
   }
-  dateClick(){
+  DateClick(){
     this.datePicker.show({
-      date: new Date(),
+      date: this.date,
       mode: 'date',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
     }).then(
-      date => this.date = date,
+      date => {this.date = date},
       err => console.log('Error occurred while getting date: ', err)
     );
+  }
+
+  SaveEdzes(){
+
   }
 
 }
