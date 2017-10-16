@@ -43,4 +43,9 @@ export class AboutPage {
   AddGyak(){
     this.add = !this.add;
   }
+
+  DeleteAll(){
+    this.storage.clear();
+    this.gyakList = [];
+  }
 }
