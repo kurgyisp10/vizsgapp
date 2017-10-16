@@ -24,16 +24,21 @@
   </ion-list>
   
   <br><br>
-  <ion-card *ngFor="let gyak of gyakList">
-    <img src="{{ gyak.url }}"/>
-    <ion-card-content>
-      <ion-card-title text-right>
-        {{ gyak.name }}
-        </ion-card-title>
-      <p>
-        <br>
-      </p>
-    </ion-card-content>
-  </ion-card>
+  <ion-list>
+    <ion-item *ngFor="let gyak of gyakList">
+      <ion-thumbnail item-start>
+          <img src="{{ gyak.url }}"/>
+      </ion-thumbnail>
+      <h2>{{ gyak.name }}</h2>
+      <ion-buttons end>
+          <button ion-button clear icon-only>
+            <ion-icon name="construct"></ion-icon>
+          </button>
+          <button ion-button clear icon-only>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-item>
+  </ion-list>
   <button ion-button block (click)="DeleteSheet()">Összes törlése</button>
 </ion-content>

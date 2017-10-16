@@ -41,6 +41,8 @@ export class AboutPage {
     this.gyakList.push(temp);
     this.storage.set('gyakList', this.gyakList);
     this.add = false;
+    this.url = "";
+    this.name = "";
   }
 
   AddGyak(){
@@ -49,6 +51,8 @@ export class AboutPage {
 
   options: ActionSheetOptions = {
     buttonLabels: [],
+    androidEnableCancelButton: true,
+    winphoneEnableCancelButton: true,
     addCancelButtonWithLabel: 'Mégse',
     addDestructiveButtonWithLabel: 'Összes törlése'
   };
