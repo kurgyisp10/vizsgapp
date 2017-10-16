@@ -7,7 +7,8 @@
 </ion-header>
 
 <ion-content padding>
-    <button ion-button block (click)="AddGyak()">Gyakorlat hozzáadása</button>
+    <button ion-button block (click)="AddGyak()" *ngIf="add == false">Gyakorlat hozzáadása</button>
+    <button ion-button block (click)="AddGyak()" *ngIf="add == true">Mégse</button>
   <ion-list *ngIf="add == true">
 
     <ion-item>

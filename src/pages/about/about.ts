@@ -41,6 +41,6 @@ export class AboutPage {
   }
 
   AddGyak(){
-    this.add = true;
+    this.add = !this.add;
   }
 }
