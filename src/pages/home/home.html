@@ -7,20 +7,19 @@
 <ion-content padding>
   <ion-list>
     
-  <ion-item>
-    <ion-label floating>Ikon (URL)</ion-label>
-    <ion-input type="text" [(ngModel)] = "url"></ion-input>
-  </ion-item>
+    <ion-item>
+      <button ion-button block round (click)="dateClick()">Dátum: {{ date }}</button>
+    </ion-item>
 
-  <ion-item>
-    <ion-label floating>Név</ion-label>
-    <ion-input type="text" [(ngModel)] = "name"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label floating>Név</ion-label>
+      <ion-input type="text" [(ngModel)] = "name"></ion-input>
+    </ion-item>
     
   </ion-list>
   <br>
   
+
   
-  
-  <button ion-button block (click)="SaveGyak()">Mentés</button> 
+  <button ion-button block (click)="SaveEdzes()">Mentés</button> 
 </ion-content>
