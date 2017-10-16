@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'about.html'
 })
 export class AboutPage {
-  private url;
+  private url = "";
   private name;
   private gyakList;
   private defaultImg = "https://d30y9cdsu7xlg0.cloudfront.net/png/883-200.png";
