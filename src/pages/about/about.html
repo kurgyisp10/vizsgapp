@@ -7,7 +7,8 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
+    <button ion-button block (click)="AddGyak()">Gyakorlat hozzáadása</button>
+  <ion-list *ngIf="add == true">
 
     <ion-item>
       <ion-label floating>Ikon (URL)</ion-label>
@@ -18,9 +19,9 @@
       <ion-label floating>Név</ion-label>
       <ion-input type="text" [(ngModel)] = "name"></ion-input>
     </ion-item>
-
+    <button ion-button block (click)="SaveGyak()">Mentés</button>
   </ion-list>
-  <button ion-button block (click)="SaveGyak()">Mentés</button>
+  
   <br><br>
   <ion-card *ngFor="let gyak of gyakList">
     <img src="{{ gyak.url }}"/>

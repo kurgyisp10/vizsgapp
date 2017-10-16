@@ -14,6 +14,8 @@ export class AboutPage {
   private gyakList;
   private defaultImg = "https://d30y9cdsu7xlg0.cloudfront.net/png/883-200.png";
 
+  private add = false;
+
   constructor(private storage: Storage, public navCtrl: NavController) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
@@ -35,6 +37,10 @@ export class AboutPage {
 
     this.gyakList.push(temp);
     this.storage.set('gyakList', this.gyakList);
+    this.add = false;
   }
 
+  AddGyak(){
+    this.add = true;
+  }
 }
