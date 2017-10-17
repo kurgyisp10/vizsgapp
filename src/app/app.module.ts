@@ -15,7 +15,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePicker } from '@ionic-native/date-picker';
 import { ActionSheet } from '@ionic-native/action-sheet';
+<<<<<<< HEAD
 import { Toast } from '@ionic-native/toast';
+=======
+import { BatteryStatus } from '@ionic-native/battery-status';
+>>>>>>> f1885bc52daf9c49fafb159254815aa5e5758d2a
 
 @NgModule({
   declarations: [
@@ -44,6 +48,7 @@ import { Toast } from '@ionic-native/toast';
     DatePicker,
     ActionSheet, 
     Toast,
+    BatteryStatus, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
