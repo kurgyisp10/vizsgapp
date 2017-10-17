@@ -14,10 +14,10 @@
     </button>
   </ion-list>
 
-  <ion-list no-lines>
+  <ion-list no-lines *ngFor="let eGyak of edzesGyak.array">
     <ion-item>
       <ion-label>Gyakorlat</ion-label>
-      <ion-select [(ngModel)]="select">
+      <ion-select [(ngModel)]="eGyak.name">
         <ion-option *ngFor="let gyak of gyakList" value="{{ gyak.name }}">{{ gyak.name }}</ion-option>
       </ion-select>
     </ion-item>
@@ -26,11 +26,11 @@
             <ion-col>
               <ion-item>
                 <ion-label>Mennyiség</ion-label>
-                <ion-input type="number" min=0></ion-input>
+                <ion-input type="number" min=0 [(ngModel)]="eGyak.value"></ion-input>
               </ion-item>
             </ion-col>
-            <ion-col col-3>
-              <ion-select [(ngModel)]="select2">
+            <ion-col col-4>
+              <ion-select [(ngModel)]="eGyak.type">
                 <ion-option value="db">db</ion-option>          
                 <ion-option value="perc">perc</ion-option>
               </ion-select>
@@ -44,5 +44,21 @@
   
 
   <br>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+      <button ion-button block color="secondary" icon-start (click)="AddGyak()">
+        <ion-icon name="add"></ion-icon>
+        Gyakorlat
+      </button>
+    </ion-col>
+  <ion-col col-6>
+      <button ion-button block color="danger" icon-right (click)="RemoveGyak()">
+        Utolsó törlése
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
   <button ion-button block (click)="SaveEdzes()">Mentés</button> 
 </ion-content>

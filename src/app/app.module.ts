@@ -15,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePicker } from '@ionic-native/date-picker';
 import { ActionSheet } from '@ionic-native/action-sheet';
+import { Toast } from '@ionic-native/toast';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ActionSheet } from '@ionic-native/action-sheet';
     SplashScreen,
     DatePicker,
     ActionSheet, 
+    Toast,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
