@@ -16,7 +16,7 @@
 
   <ion-list no-lines *ngFor="let eGyak of edzesGyak.array">
     <ion-item>
-      <ion-label>Gyakorlat</ion-label>
+      <ion-label>Gyakorlat:</ion-label>
       <ion-select [(ngModel)]="eGyak.name">
         <ion-option *ngFor="let gyak of gyakList" value="{{ gyak.name }}">{{ gyak.name }}</ion-option>
       </ion-select>
@@ -25,15 +25,17 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>Mennyiség</ion-label>
+                <ion-label>Mennyiség:</ion-label>
                 <ion-input type="number" min=0 [(ngModel)]="eGyak.value"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-4>
-              <ion-select [(ngModel)]="eGyak.type">
+              <ion-item>
+              <ion-select class="full-width-select" [(ngModel)]="eGyak.type">
                 <ion-option value="db">db</ion-option>          
                 <ion-option value="perc">perc</ion-option>
               </ion-select>
+            </ion-item>
             </ion-col>
           </ion-row>
         </ion-grid>

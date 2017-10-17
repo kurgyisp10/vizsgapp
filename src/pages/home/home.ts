@@ -4,7 +4,7 @@ import { NavController } from 'ionic-angular';
 //Added
 import { DatePicker } from '@ionic-native/date-picker';
 import { Storage } from '@ionic/storage';
-import { Toast } from '@ionic-native/toast';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -25,7 +25,7 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               private datePicker: DatePicker,
               private storage: Storage,
-              private toast: Toast) {
+              public toastCtrl: ToastController) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
         this.gyakList = [];
@@ -60,7 +60,7 @@ export class HomePage {
     let temp = {
       name: "",
       value: 10,
-      type: "db"
+      type: "perc"
     }
     this.edzesGyak.array.push(temp);
   }
@@ -74,7 +74,12 @@ export class HomePage {
     this.storage.set('edzesDb', this.edzesDb);
     this.edzesList.push(this.edzesGyak);
     this.storage.set('edzesList', this.edzesList);
-    this.toast.showShortTop("Edzés sikeresen elmentve!");
+    const toast = this.toastCtrl.create({
+      message: 'Edzés sikeresen elmentve',
+      duration: 3000,
+      position: 'center'
+    });
+    toast.present();
     this.edzesGyak.array = [];
     this.AddGyak();
   }
