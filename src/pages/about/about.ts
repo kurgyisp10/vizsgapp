@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 //Added
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
 import { Storage } from '@ionic/storage';
+import { BatteryStatus } from '@ionic-native/battery-status';
 
 @Component({
   selector: 'page-about',
