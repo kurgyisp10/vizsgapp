@@ -66,4 +66,9 @@ export class ContactPage {
       err => console.log('Error occurred while getting date: ', err)
     );
   }
+
+  DeleteDiary(){
+    this.edzesList = [];
+    this.storage.set('edzesList', this.edzesList);
+  }
 }
