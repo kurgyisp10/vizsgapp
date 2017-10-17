@@ -20,7 +20,8 @@ export class AboutPage {
 
   constructor(private storage: Storage,
               public navCtrl: NavController,
-              private actionSheet: ActionSheet) {
+              private actionSheet: ActionSheet,
+              private batteryStatus: BatteryStatus) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
         this.gyakList = [];
