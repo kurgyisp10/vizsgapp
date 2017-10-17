@@ -78,8 +78,10 @@ export class HomePage {
   }
 
   RemoveGyak(){
-    this.edzesGyak.array.pop();
-    --this.edzesGyDb;
+    if(this.edzesGyDb > 1) {
+      this.edzesGyak.array.pop();
+      --this.edzesGyDb;
+    }
   }
 
   async SaveEdzes(){

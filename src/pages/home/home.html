@@ -52,7 +52,7 @@
             </button>
           </ion-col>
         <ion-col col-6>
-            <button *ngIf="i+1 == edzesGyDb" ion-button block color="danger" icon-right (click)="RemoveGyak()">
+            <button *ngIf="i+1 == edzesGyDb && edzesGyDb > 1" ion-button block color="danger" icon-right (click)="RemoveGyak()">
               Utolsó törlése
               <ion-icon name="close"></ion-icon>
             </button>
