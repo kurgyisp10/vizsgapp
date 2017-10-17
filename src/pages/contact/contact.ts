@@ -11,14 +11,23 @@ import { Brightness } from '@ionic-native/brightness';
 export class ContactPage {
   private b = false;
   private level = 200;
+  private level2 = 150;
 
   constructor(public navCtrl: NavController,
-              private batteryStatus: BatteryStatus) {
+              private batteryStatus: BatteryStatus,
+              private brightness: Brightness) {
                 window.addEventListener("batterylow", onBatteryLow, false);
                 
                 function onBatteryLow(status) {
                     alert("Battery Level Low " + status.level + "%");
                     this.level = status.level;
+                    let brightnessValue: number = 0.2;
+                    this.brightness.setBrightness(brightnessValue);
+                }
+                window.addEventListener("batterystatus", onBatteryStatus, false);
+                
+                function onBatteryStatus(status) {
+                  this.level2 = status.level;
                 }
   }
 
