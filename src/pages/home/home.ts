@@ -19,7 +19,7 @@ export class HomePage {
 
   private date : any = new Date();
   private gyakList;
-  private edzesList;
+  private edzesList = [];
   private edzesGyak = {
     date: this.date,
     array: []
@@ -41,14 +41,6 @@ export class HomePage {
         this.gyakList = [];
       }else{
         this.gyakList = val;
-      }
-    });
-    this.storage.get('edzesList').then((val) => {
-      if (val == null){
-        this.edzesList = [];
-        this.elsoStart = true;
-      }else{
-        this.edzesList = val;
       }
     });
     this.AddGyak();
@@ -96,6 +88,14 @@ export class HomePage {
   }
 
   async SaveEdzes(){
+    this.storage.get('edzesList').then((val) => {
+      if (val == null){
+        this.edzesList = [];
+        this.elsoStart = true;
+      }else{
+        this.edzesList = val;
+      }
+    });
     this.spinnerDialog.show("Várakotás", "Mert miért ne...", false);
     alert("Várjál!");
     this.edzesList.push(this.edzesGyak);
