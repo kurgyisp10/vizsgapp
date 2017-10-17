@@ -14,24 +14,33 @@
     </button>
   </ion-list>
 
-  <ion-list>
+  <ion-list no-lines>
     <ion-item>
       <ion-label>Gyakorlat</ion-label>
       <ion-select [(ngModel)]="select">
         <ion-option *ngFor="let gyak of gyakList" value="{{ gyak.name }}">{{ gyak.name }}</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-label floating>Mennyiség</ion-label>
-      <ion-input type="number" min=0></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-select [(ngModel)]="select2">
-          <ion-option value="db">db</ion-option>          
-          <ion-option value="perc">perc</ion-option>
-        </ion-select>
-    </ion-item>
+      <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>Mennyiség</ion-label>
+                <ion-input type="number" min=0></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-3>
+              <ion-select [(ngModel)]="select2">
+                <ion-option value="db">db</ion-option>          
+                <ion-option value="perc">perc</ion-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
   </ion-list>
+  
+  
+
   
 
   <br>

@@ -17,7 +17,7 @@ export class HomePage {
   private edzesDb = 0;
   private elsoStart = false;
   private select;
-  private select2;
+  private select2 = "db";
 
   constructor(public navCtrl: NavController,
               private datePicker: DatePicker,
