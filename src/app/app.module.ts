@@ -18,6 +18,7 @@ import { ActionSheet } from '@ionic-native/action-sheet';
 import { Toast } from '@ionic-native/toast';
 import { BatteryStatus } from '@ionic-native/battery-status';
 import { Brightness } from '@ionic-native/brightness';
+import { Vibration } from '@ionic-native/vibration';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { Brightness } from '@ionic-native/brightness';
     Toast,
     BatteryStatus, 
     Brightness,
+    Vibration,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
