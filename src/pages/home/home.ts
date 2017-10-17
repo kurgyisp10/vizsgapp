@@ -7,6 +7,8 @@ import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
 import { StatusBar } from '@ionic-native/status-bar';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+
 
 @Component({
   selector: 'page-home',
@@ -30,7 +32,8 @@ export class HomePage {
               private storage: Storage,
               public toastCtrl: ToastController,
               private vibration: Vibration,
-              private statusBar: StatusBar) {
+              private statusBar: StatusBar,
+              private localNotifications: LocalNotifications) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
         this.gyakList = [];
@@ -58,6 +61,10 @@ export class HomePage {
       date => {this.date = date, this.edzesGyak.date = date},
       err => console.log('Error occurred while getting date: ', err)
     );
+    this.localNotifications.schedule({
+      id: 1,
+      text: 'HALIhó!!!',
+    });
   }
 
   AddGyak(eGyak?){
