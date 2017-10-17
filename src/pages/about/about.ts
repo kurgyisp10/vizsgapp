@@ -73,4 +73,11 @@ export class AboutPage {
     this.gyakList = [];
     this.storage.set('gyakList', this.gyakList);
   }
+
+  DeleteThis(i){
+    //this.storage.remove(gyak.name);
+    //alert(gyak.name);
+    this.gyakList.splice(i, 1);
+    this.storage.set('gyakList', this.gyakList);
+  }
 }
