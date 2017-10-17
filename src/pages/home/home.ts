@@ -5,6 +5,7 @@ import { NavController } from 'ionic-angular';
 import { DatePicker } from '@ionic-native/date-picker';
 import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
+import { Vibration } from '@ionic-native/vibration';
 
 @Component({
   selector: 'page-home',
@@ -26,7 +27,8 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               private datePicker: DatePicker,
               private storage: Storage,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController,
+              private vibration: Vibration) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
         this.gyakList = [];
@@ -87,6 +89,7 @@ export class HomePage {
       duration: 3000,
       position: 'top'
     });
+    this.vibration.vibrate(1000);
     toast.present();
     this.edzesGyak.array = [];
     this.saved = true;
