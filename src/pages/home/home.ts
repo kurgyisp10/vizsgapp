@@ -73,7 +73,7 @@ export class HomePage {
     if (this.saved){
       let temp = {
         name: "",
-        value: 18,
+        value: 10,
         type: "perc"
       }
       this.edzesGyak.array.push(temp);
