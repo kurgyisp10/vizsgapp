@@ -97,6 +97,7 @@ export class HomePage {
 
   async SaveEdzes(){
     this.spinnerDialog.show("Várakotás", "Mert miért ne...", false);
+    alert("Várjál!");
     this.edzesList.push(this.edzesGyak);
     await this.storage.set('edzesList', this.edzesList);
     const toast = this.toastCtrl.create({
