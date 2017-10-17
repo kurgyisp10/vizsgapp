@@ -9,19 +9,10 @@
 <ion-content padding>
   <ion-list>
       <ion-item>
-          {{ lat1 }}
+          Itt vagy: {{ lat1 }}, {{ lon1 }}
       </ion-item>
       <ion-item>
-            {{ lon1 }}
-      </ion-item>
-      <ion-item>
-          {{ lat2 }}
-      </ion-item>
-      <ion-item>
-            {{ lon2 }}
-      </ion-item>
-      <ion-item>
-          {{ d }}
+          És még ennyi a SCHBody: {{ d | number:'1.0-0' }} méter
       </ion-item>
   </ion-list>
 </ion-content>
