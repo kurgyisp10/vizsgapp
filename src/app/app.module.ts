@@ -21,6 +21,7 @@ import { Brightness } from '@ionic-native/brightness';
 import { Vibration } from '@ionic-native/vibration';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Dialogs } from '@ionic-native/dialogs';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     Vibration,
     LocalNotifications,
     Geolocation,
+    Dialogs,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

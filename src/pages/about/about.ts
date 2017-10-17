@@ -6,6 +6,7 @@ import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
 import { Storage } from '@ionic/storage';
 import { BatteryStatus } from '@ionic-native/battery-status';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Dialogs } from '@ionic-native/dialogs';
 
 @Component({
   selector: 'page-about',
@@ -23,7 +24,8 @@ export class AboutPage {
               public navCtrl: NavController,
               private actionSheet: ActionSheet,
               private statusBar: StatusBar,
-              private batteryStatus: BatteryStatus) {
+              private batteryStatus: BatteryStatus,
+              private dialogs: Dialogs) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
         this.gyakList = [];
@@ -80,6 +82,9 @@ export class AboutPage {
   DeleteThis(i){
     //this.storage.remove(gyak.name);
     //alert(gyak.name);
+    this.dialogs.confirm('Biztosan törlöd?')
+      .then(() => console.log('Dialog dismissed'))
+      .catch(e => console.log('Error displaying dialog', e));
     this.gyakList.splice(i, 1);
     this.storage.set('gyakList', this.gyakList);
   }
