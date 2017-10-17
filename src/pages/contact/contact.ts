@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+//Added
+import { DatePicker } from '@ionic-native/date-picker';
 import { BatteryStatus } from '@ionic-native/battery-status';
 import { Brightness } from '@ionic-native/brightness';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-contact',
@@ -12,10 +15,19 @@ export class ContactPage {
   private b = false;
   private level = 200;
   private level2 = 150;
+  private showAll = true;
+  private date = new Date();
+  private edzesList;
+  private edzesGyak = {
+    date: this.date,
+    array: []
+  };
 
   constructor(public navCtrl: NavController,
+              private datePicker: DatePicker,
               private batteryStatus: BatteryStatus,
-              private brightness: Brightness) {
+              private brightness: Brightness,
+              private storage: Storage) {
                 window.addEventListener("batterylow", onBatteryLow, false);
                 
                 function onBatteryLow(status) {
@@ -29,9 +41,26 @@ export class ContactPage {
                 function onBatteryStatus(status) {
                   this.level2 = status.level;
                 }
-  }
+    this.storage.get('edzesList').then((val) => {
+      if (val == null){
+        this.edzesList = [];
+      }else{
+        this.edzesList = val;
+      }
+    });
+}
 
   ShowButt(){
     this.b = !this.b;
+  }
+
+  DateClick(){
+    this.datePicker.show({
+      date: this.date,
+      mode: 'date'
+    }).then(
+      date => {this.date = date},
+      err => console.log('Error occurred while getting date: ', err)
+    );
   }
 }

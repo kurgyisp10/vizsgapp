@@ -19,8 +19,9 @@ export class HomePage {
     date: this.date,
     array: []
   };
-  private edzesDb = 0;
+  private edzesGyDb = 0;
   private elsoStart = false;
+  private saved = true; 
 
   constructor(public navCtrl: NavController,
               private datePicker: DatePicker,
@@ -39,9 +40,6 @@ export class HomePage {
         this.elsoStart = true;
       }else{
         this.edzesList = val;
-        this.storage.get('edzesDb').then((val2) => {
-          this.edzesDb = val2;
-        });
       }
     });
     this.AddGyak();
@@ -56,31 +54,43 @@ export class HomePage {
     );
   }
 
-  AddGyak(){    
-    let temp = {
-      name: "",
-      value: 10,
-      type: "perc"
+  AddGyak(eGyak?){
+    if (this.saved){
+      let temp = {
+        name: "",
+        value: 18,
+        type: "perc"
+      }
+      this.edzesGyak.array.push(temp);
+      ++this.edzesGyDb;
+    }else{
+      this.edzesGyak.array.pop();
+      console.log(eGyak);
+      alert(JSON.stringify(eGyak));
+      this.edzesGyak.array.push(eGyak);
+      alert(JSON.stringify(this.edzesGyak));
     }
-    this.edzesGyak.array.push(temp);
+    this.saved = !this.saved;
   }
 
   RemoveGyak(){
     this.edzesGyak.array.pop();
+    --this.edzesGyDb;
   }
 
-  SaveEdzes(){
-    ++this.edzesDb;
-    this.storage.set('edzesDb', this.edzesDb);
+  async SaveEdzes(){
     this.edzesList.push(this.edzesGyak);
-    this.storage.set('edzesList', this.edzesList);
+    await this.storage.set('edzesList', this.edzesList);
+
     const toast = this.toastCtrl.create({
       message: 'Edzés sikeresen elmentve',
       duration: 3000,
-      position: 'center'
+      position: 'top'
     });
     toast.present();
     this.edzesGyak.array = [];
+    this.saved = true;
+    this.edzesGyDb = 0;
     this.AddGyak();
   }
 

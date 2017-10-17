@@ -14,4 +14,34 @@
         Gyakrabbi szint: {{level2}}
       </ion-item>
   </ion-list>
+  <ion-list>
+    <ion-item>
+        <ion-label>Mindent mutass</ion-label>
+        <ion-toggle color="secondary" [(ngModel)]="showAll"></ion-toggle>
+    </ion-item>
+    <button ion-item (click)="DateClick()"  *ngIf="!showAll">
+        <ion-icon name="calendar" item-start></ion-icon>
+        {{ date | date:"yyyy. MM. dd." }}
+    </button>
+  </ion-list>
+
+  <template ngFor let-edzes [ngForOf]="edzesList">
+    <ion-list *ngIf="showAll || (edzes.date | date:'yyyy. MM. dd.') == (date | date:'yyyy. MM. dd.')">
+      <ion-list-header>
+        {{ edzes.date | date:'yyyy. MM. dd.'}}
+      </ion-list-header>
+      <template ngFor let-gyak [ngForOf]="edzes.array">
+        <ion-item>
+          <!-- <ion-thumbnail item-start>
+            <img src="img/thumbnail-totoro.png">
+          </ion-thumbnail> -->
+          <h2>{{ gyak.name }}</h2>
+          <p>{{ gyak.value }} {{ gyak.type }}</p>
+        </ion-item>
+      </template>
+    </ion-list>
+
+  </template>
+
+ 
 </ion-content>

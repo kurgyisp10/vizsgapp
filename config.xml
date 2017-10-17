@@ -88,4 +88,5 @@
     <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
     <plugin name="cordova-plugin-battery-status" spec="^1.2.4" />
     <plugin name="cordova-plugin-brightness" spec="^0.1.5" />
+    <plugin name="cordova-plugin-vibration" spec="^2.1.5" />
 </widget>

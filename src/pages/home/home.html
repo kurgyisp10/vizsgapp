@@ -14,31 +14,52 @@
     </button>
   </ion-list>
 
-  <ion-list no-lines *ngFor="let eGyak of edzesGyak.array">
+  <ion-list no-lines *ngFor="let eGyak of edzesGyak.array; let i = index">
     <ion-item>
       <ion-label>Gyakorlat:</ion-label>
-      <ion-select [(ngModel)]="eGyak.name">
+      <ion-select *ngIf="i+1 == edzesGyDb && !saved" [(ngModel)]="eGyak.name">
         <ion-option *ngFor="let gyak of gyakList" value="{{ gyak.name }}">{{ gyak.name }}</ion-option>
       </ion-select>
+      <ion-input *ngIf="!(i+1 == edzesGyDb && !saved)" type="text" readonly=true placeholder="{{eGyak.name}}"></ion-input>
     </ion-item>
       <ion-grid>
           <ion-row>
             <ion-col>
               <ion-item>
                 <ion-label>Mennyiség:</ion-label>
-                <ion-input type="number" min=0 [(ngModel)]="eGyak.value"></ion-input>
+                <ion-input type="number" min=0 [(ngModel)]="eGyak.value" [readonly]="i+1 != edzesGyDb || saved"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-4>
               <ion-item>
-              <ion-select class="full-width-select" [(ngModel)]="eGyak.type">
+              <ion-select *ngIf="i+1 == edzesGyDb && !saved" class="full-width-select" [(ngModel)]="eGyak.type">
                 <ion-option value="db">db</ion-option>          
                 <ion-option value="perc">perc</ion-option>
               </ion-select>
+              <ion-input *ngIf="!(i+1 == edzesGyDb && !saved)" type="text" readonly=true placeholder="{{eGyak.type}}"></ion-input>
             </ion-item>
             </ion-col>
           </ion-row>
+          <ion-row>
+            <ion-col>
+            <button *ngIf="i+1 == edzesGyDb && saved" ion-button block color="secondary" icon-start (click)="AddGyak()">
+              <ion-icon name="add"></ion-icon>
+              Gyakorlat
+            </button>
+            <button *ngIf="i+1 == edzesGyDb && !saved" ion-button block color="secondary" icon-start (click)="AddGyak(eGyak)">
+              <ion-icon name="add"></ion-icon>
+              Mentés
+            </button>
+          </ion-col>
+        <ion-col col-6>
+            <button *ngIf="i+1 == edzesGyDb" ion-button block color="danger" icon-right (click)="RemoveGyak()">
+              Utolsó törlése
+              <ion-icon name="close"></ion-icon>
+            </button>
+          </ion-col>
+          </ion-row>
         </ion-grid>
+      
   </ion-list>
   
   
@@ -46,21 +67,6 @@
   
 
   <br>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-      <button ion-button block color="secondary" icon-start (click)="AddGyak()">
-        <ion-icon name="add"></ion-icon>
-        Gyakorlat
-      </button>
-    </ion-col>
-  <ion-col col-6>
-      <button ion-button block color="danger" icon-right (click)="RemoveGyak()">
-        Utolsó törlése
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-col>
-    </ion-row>
-  </ion-grid>
+  
   <button ion-button block (click)="SaveEdzes()">Mentés</button> 
 </ion-content>
