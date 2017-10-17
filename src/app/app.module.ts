@@ -19,6 +19,7 @@ import { Toast } from '@ionic-native/toast';
 import { BatteryStatus } from '@ionic-native/battery-status';
 import { Brightness } from '@ionic-native/brightness';
 import { Vibration } from '@ionic-native/vibration';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { Vibration } from '@ionic-native/vibration';
     BatteryStatus, 
     Brightness,
     Vibration,
+    LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
