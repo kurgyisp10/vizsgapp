@@ -17,6 +17,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { ActionSheet } from '@ionic-native/action-sheet';
 import { Toast } from '@ionic-native/toast';
 import { BatteryStatus } from '@ionic-native/battery-status';
+import { Brightness } from '@ionic-native/brightness';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { BatteryStatus } from '@ionic-native/battery-status';
     ActionSheet, 
     Toast,
     BatteryStatus, 
+    Brightness,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

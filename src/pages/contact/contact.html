@@ -8,10 +8,9 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+      <button ion-button block (click)="ShowButt()">Akksi állapota</button>
+      <ion-item *ngIf="b == true">
+        Szint: {{level}}
+      </ion-item>
   </ion-list>
 </ion-content>
