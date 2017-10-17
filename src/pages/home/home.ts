@@ -6,6 +6,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
+import { StatusBar } from '@ionic-native/status-bar';
 
 @Component({
   selector: 'page-home',
@@ -28,7 +29,8 @@ export class HomePage {
               private datePicker: DatePicker,
               private storage: Storage,
               public toastCtrl: ToastController,
-              private vibration: Vibration) {
+              private vibration: Vibration,
+              private statusBar: StatusBar) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
         this.gyakList = [];
@@ -45,7 +47,9 @@ export class HomePage {
       }
     });
     this.AddGyak();
+    this.statusBar.backgroundColorByHexString('#ffffff');
   }
+  
   DateClick(){
     this.datePicker.show({
       date: this.date,
@@ -68,9 +72,7 @@ export class HomePage {
     }else{
       this.edzesGyak.array.pop();
       console.log(eGyak);
-      alert(JSON.stringify(eGyak));
       this.edzesGyak.array.push(eGyak);
-      alert(JSON.stringify(this.edzesGyak));
     }
     this.saved = !this.saved;
   }

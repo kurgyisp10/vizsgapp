@@ -5,6 +5,7 @@ import { NavController } from 'ionic-angular';
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
 import { Storage } from '@ionic/storage';
 import { BatteryStatus } from '@ionic-native/battery-status';
+import { StatusBar } from '@ionic-native/status-bar';
 
 @Component({
   selector: 'page-about',
@@ -21,6 +22,7 @@ export class AboutPage {
   constructor(private storage: Storage,
               public navCtrl: NavController,
               private actionSheet: ActionSheet,
+              private statusBar: StatusBar,
               private batteryStatus: BatteryStatus) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
@@ -29,6 +31,7 @@ export class AboutPage {
         this.gyakList = val;
       }
     });
+    this.statusBar.backgroundColorByHexString('#ffffff');
   }
 
   SaveGyak(){

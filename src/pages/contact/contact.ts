@@ -6,6 +6,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { BatteryStatus } from '@ionic-native/battery-status';
 import { Brightness } from '@ionic-native/brightness';
 import { Storage } from '@ionic/storage';
+import { StatusBar } from '@ionic-native/status-bar';
 
 @Component({
   selector: 'page-contact',
@@ -27,7 +28,8 @@ export class ContactPage {
               private datePicker: DatePicker,
               private batteryStatus: BatteryStatus,
               private brightness: Brightness,
-              private storage: Storage) {
+              private storage: Storage,
+              private statusBar: StatusBar) {
                 window.addEventListener("batterylow", onBatteryLow, false);
                 
                 function onBatteryLow(status) {
@@ -48,6 +50,7 @@ export class ContactPage {
         this.edzesList = val;
       }
     });
+    this.statusBar.backgroundColorByHexString('#ffffff');
 }
 
   ShowButt(){
