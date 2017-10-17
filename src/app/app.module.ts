@@ -20,6 +20,7 @@ import { BatteryStatus } from '@ionic-native/battery-status';
 import { Brightness } from '@ionic-native/brightness';
 import { Vibration } from '@ionic-native/vibration';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     Brightness,
     Vibration,
     LocalNotifications,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -63,7 +63,9 @@ export class HomePage {
     );
     this.localNotifications.schedule({
       id: 1,
-      text: 'HALIhó!!!',
+      title: 'Gyanús tevékenység észlelve',
+      text: 'Nem utólag kéne beírni...',
+      at: new Date(new Date().getTime() + 2),
     });
   }
 
