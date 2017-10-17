@@ -13,9 +13,9 @@ import { StatusBar } from '@ionic-native/status-bar';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-  private b = false;
+  /*private b = false;
   private level = 200;
-  private level2 = 150;
+  private level2 = 150;*/
   private showAll = true;
   private date = new Date();
   private edzesList;
@@ -53,9 +53,9 @@ export class ContactPage {
     this.statusBar.backgroundColorByHexString('#ffffff');
 }
 
-  ShowButt(){
+  /*ShowButt(){
     this.b = !this.b;
-  }
+  }*/
 
   DateClick(){
     this.datePicker.show({
