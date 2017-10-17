@@ -23,6 +23,7 @@ import { Vibration } from '@ionic-native/vibration';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Dialogs } from '@ionic-native/dialogs';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { Dialogs } from '@ionic-native/dialogs';
     LocalNotifications,
     Geolocation,
     Dialogs,
+    SpinnerDialog,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -8,6 +8,7 @@ import { ToastController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
 import { StatusBar } from '@ionic-native/status-bar';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class HomePage {
               public toastCtrl: ToastController,
               private vibration: Vibration,
               private statusBar: StatusBar,
-              private localNotifications: LocalNotifications) {
+              private localNotifications: LocalNotifications,
+              private spinnerDialog: SpinnerDialog) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
         this.gyakList = [];
@@ -94,9 +96,9 @@ export class HomePage {
   }
 
   async SaveEdzes(){
+    this.spinnerDialog.show("Várakotás", "Mert miért ne...", false);
     this.edzesList.push(this.edzesGyak);
     await this.storage.set('edzesList', this.edzesList);
-
     const toast = this.toastCtrl.create({
       message: 'Edzés sikeresen elmentve',
       duration: 3000,
@@ -108,6 +110,7 @@ export class HomePage {
     this.saved = true;
     this.edzesGyDb = 0;
     this.AddGyak();
+    this.spinnerDialog.hide();
   }
 
 }
