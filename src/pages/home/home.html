@@ -15,16 +15,24 @@
   </ion-list>
 
   <ion-list no-lines *ngFor="let eGyak of edzesGyak.array; let i = index">
-    <ion-item>
-      <ion-label>Gyakorlat:</ion-label>
-      <ion-select *ngIf="i+1 == edzesGyDb && !saved" [(ngModel)]="eGyak.name">
-        <ion-option *ngFor="let gyak of gyakList" value="{{ gyak.name }}">{{ gyak.name }}</ion-option>
-      </ion-select>
-      <ion-input *ngIf="!(i+1 == edzesGyDb && !saved)" type="text" readonly=true placeholder="{{eGyak.name}}"></ion-input>
-    </ion-item>
-    <button ion-button clear icon-only *ngIf="i+1 == edzesGyDb && !saved" (click)="Refresh()">
-        <ion-icon name="refresh"></ion-icon>
-    </button>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Gyakorlat:</ion-label>
+            <ion-select *ngIf="i+1 == edzesGyDb && !saved" [(ngModel)]="eGyak.name">
+              <ion-option *ngFor="let gyak of gyakList" value="{{ gyak.name }}">{{ gyak.name }}</ion-option>
+            </ion-select>
+            <ion-input *ngIf="!(i+1 == edzesGyDb && !saved)" type="text" readonly=true placeholder="{{eGyak.name}}"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-1>
+          <button ion-button clear icon-only *ngIf="i+1 == edzesGyDb && !saved" (click)="Refresh()">
+              <ion-icon name="refresh"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
       <ion-grid>
           <ion-row>
             <ion-col>

@@ -3,8 +3,6 @@ import { NavController } from 'ionic-angular';
 
 //Added
 import { DatePicker } from '@ionic-native/date-picker';
-import { BatteryStatus } from '@ionic-native/battery-status';
-import { Brightness } from '@ionic-native/brightness';
 import { Storage } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -19,15 +17,9 @@ export class ContactPage {
   private showAll = true;
   private date = new Date();
   private edzesList;
-  private edzesGyak = {
-    date: this.date,
-    array: []
-  };
 
   constructor(public navCtrl: NavController,
               private datePicker: DatePicker,
-              private batteryStatus: BatteryStatus,
-              private brightness: Brightness,
               private storage: Storage,
               private statusBar: StatusBar) {
     window.addEventListener("batterylow", onBatteryLow, false);

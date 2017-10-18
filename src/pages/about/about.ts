@@ -4,7 +4,6 @@ import { NavController } from 'ionic-angular';
 //Added
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
 import { Storage } from '@ionic/storage';
-import { BatteryStatus } from '@ionic-native/battery-status';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Dialogs } from '@ionic-native/dialogs';
 
@@ -24,7 +23,6 @@ export class AboutPage {
               public navCtrl: NavController,
               private actionSheet: ActionSheet,
               private statusBar: StatusBar,
-              private batteryStatus: BatteryStatus,
               private dialogs: Dialogs) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
