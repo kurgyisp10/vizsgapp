@@ -8,7 +8,7 @@ import { ToastController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
 import { StatusBar } from '@ionic-native/status-bar';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { SpinnerDialog } from '@ionic-native/spinner-dialog';
+//import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class HomePage {
 
   private date : any = new Date();
   private gyakList;
-  private edzesList = [];
+  private edzesList;
   private edzesGyak = {
     date: this.date,
     array: []
@@ -35,7 +35,7 @@ export class HomePage {
               private vibration: Vibration,
               private statusBar: StatusBar,
               private localNotifications: LocalNotifications,
-              private spinnerDialog: SpinnerDialog) {
+              /*private spinnerDialog: SpinnerDialog*/) {
     this.storage.get('gyakList').then((val) => {
       if (val == null){
         this.gyakList = [];
@@ -88,7 +88,7 @@ export class HomePage {
   }
 
   async SaveEdzes(){
-    this.storage.get('edzesList').then((val) => {
+    await this.storage.get('edzesList').then((val) => {
       if (val == null){
         this.edzesList = [];
         this.elsoStart = true;
@@ -96,8 +96,8 @@ export class HomePage {
         this.edzesList = val;
       }
     });
-    this.spinnerDialog.show("Várakotás", "Mert miért ne...", false);
-    alert("Várjál!");
+    //this.spinnerDialog.show("Várakotás", "Mert miért ne...", false);
+    //alert("Várjál!");
     this.edzesList.push(this.edzesGyak);
     await this.storage.set('edzesList', this.edzesList);
     const toast = this.toastCtrl.create({
@@ -111,7 +111,16 @@ export class HomePage {
     this.saved = true;
     this.edzesGyDb = 0;
     this.AddGyak();
-    this.spinnerDialog.hide();
+    //this.spinnerDialog.hide();
   }
 
+  async Refresh(){
+    await this.storage.get('gyakList').then((val) => {
+      if (val == null){
+        this.gyakList = [];
+      }else{
+        this.gyakList = val;
+      }
+    });
+  }
 }

@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 
 //Added
 import { Geolocation } from '@ionic-native/geolocation';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 @Component({
     selector: 'page-navi',
@@ -18,8 +19,9 @@ export class NaviPage {
     private d;
 
   constructor(public navCtrl: NavController,
-              private geolocation: Geolocation) {
-
+              private geolocation: Geolocation,
+              private spinnerDialog: SpinnerDialog) {
+                this.spinnerDialog.show("Várakotás", "Mert miért ne...", false);
                 this.geolocation.getCurrentPosition().then((resp) => {
                     this.lat1 = resp.coords.latitude;
                     this.lon1 = resp.coords.longitude;
@@ -38,7 +40,7 @@ export class NaviPage {
                    }).catch((error) => {
                      console.log('Error getting location', error);
                    });
-                   
+                this.spinnerDialog.hide();
   }
 
 }

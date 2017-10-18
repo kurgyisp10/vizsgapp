@@ -34,14 +34,6 @@ export class ContactPage {
     
     function onBatteryLow(status) {
         alert("Battery Level Low " + status.level + "%");
-        this.level = status.level;
-        let brightnessValue: number = 0.2;
-        this.brightness.setBrightness(brightnessValue);
-    }
-    window.addEventListener("batterystatus", onBatteryStatus, false);
-    
-    function onBatteryStatus(status) {
-      this.level2 = status.level;
     }
 
     this.storage.get('edzesList').then((val) => {
@@ -51,6 +43,7 @@ export class ContactPage {
         this.edzesList = val;
       }
     });
+    //alert("Grat!");
     this.statusBar.backgroundColorByHexString('#ffffff');
 }
 
@@ -71,5 +64,15 @@ export class ContactPage {
   async DeleteDiary(){
     this.edzesList = [];
     await this.storage.set('edzesList', this.edzesList);
+  }
+
+  async Refresh(){
+    this.storage.get('edzesList').then((val) => {
+      if (val == null){
+        this.edzesList = [];
+      }else{
+        this.edzesList = val;
+      }
+    });
   }
 }

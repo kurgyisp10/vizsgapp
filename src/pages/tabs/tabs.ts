@@ -20,4 +20,15 @@ export class TabsPage {
   constructor() {
 
   }
+  /*FrissEdzes(){
+    alert("Grat!");
+    ContactPage.storage.get('edzesList').then((val) => {
+      if (val == null){
+        ContactPage.edzesList = [];
+      }else{
+        ContactPage.edzesList = val;
+      }
+    });
+    
+  }*/
 }

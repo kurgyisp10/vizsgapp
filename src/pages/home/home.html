@@ -22,6 +22,9 @@
       </ion-select>
       <ion-input *ngIf="!(i+1 == edzesGyDb && !saved)" type="text" readonly=true placeholder="{{eGyak.name}}"></ion-input>
     </ion-item>
+    <button ion-button clear icon-only *ngIf="i+1 == edzesGyDb && !saved" (click)="Refresh()">
+        <ion-icon name="refresh"></ion-icon>
+    </button>
       <ion-grid>
           <ion-row>
             <ion-col>
